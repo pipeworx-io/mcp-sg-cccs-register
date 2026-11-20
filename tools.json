@@ -1,0 +1,45 @@
+[
+  {
+    "name": "sg_cccs_cases_search",
+    "description": "Search the Singapore Competition and Consumer Commission (CCCS) public register of cases against businesses: infringement decisions and penalties for price fixing, bid rigging and information exchange (agreements_collaborations), abuse of dominance investigations (dominance_conduct), consumer-protection actions on misleading practices and fake reviews (consumer_protection), and commitments accepted from firms (commitments_remedies). Each hit gives the case id, the firm or conduct in the title, category and a link. Filter by a word (a company, 'bid rigging', 'Grab') or by category. Merger reviews are not served; cases naming individuals are dropped and counted in individuals_dropped. Example: query=\"bid rigging\". Use sg_cccs_case_get for status, reference, decision date and penalty.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Word in the case title or firm name (e.g. \"bid rigging\", \"freight\", \"Agoda\"). Optional."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "agreements_collaborations",
+            "dominance_conduct",
+            "consumer_protection",
+            "commitments_remedies"
+          ],
+          "description": "Only this part of the register. Optional."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Cases to return (1-50, default 20)."
+        }
+      }
+    }
+  },
+  {
+    "name": "sg_cccs_case_get",
+    "description": "Get one Singapore Competition and Consumer Commission (CCCS) register case against businesses by its id (such as agreements-and-collaborations/cccs-penalises-fresh-chicken-distributors-for-price-fixing-and-non-compete-agreements from sg_cccs_cases_search): the published title, status (for example Investigation, Closed - Infringement Decision Issued), CCCS reference, decision date, the case summary naming the firms and the penalties mentioned, and links to the decision and media release. An unknown id returns found:false; an entry naming an individual returns found:false with empty_reason not_a_firm_case. Example: id=\"agreements-and-collaborations/cccs-penalises-fresh-chicken-distributors-for-price-fixing-and-non-compete-agreements\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Case id as returned by sg_cccs_cases_search (category/slug)."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]

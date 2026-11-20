@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-sg-cccs-register",
+  "version": "0.1.0",
+  "description": "sg-cccs-register -- Competition and Consumer Commission of Singapore (CCCS) public register: infringement decisions, penalties, commitments and consumer-protection actions against businesses (price fixing, bid rigging, abuse of dominance, misleading practices). Merger reviews are not served.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-sg-cccs-register": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "sg-cccs-register"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-sg-cccs-register.git"
+  },
+  "mcpName": "io.github.pipeworx-io/sg-cccs-register",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "sg-cccs-register",
+    "gatewaySlug": "sg-cccs-register",
+    "sourceHash": "v1-32f023caf76a74c18fc2f80719d17427116b50861ed6923e23952ccae1afa63c",
+    "sourceCommit": "01fc48151e144f8b0923c0f986eb172c285e5e09"
+  }
+}
